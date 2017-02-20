@@ -4,7 +4,7 @@ namespace Coral.Core
 {
  public struct EventInfo<I, S>
     where S: struct
-    where I: class
+    where I: struct
   {
     public I           EntityId { get; }
     public IEvent<S>   Event { get; }
@@ -19,8 +19,12 @@ namespace Coral.Core
       Version  = version; TimeStamp = timestamp;
     }
 
-    public Builder newBuilder(IEvent<S> evt, I entityId, int version) {
+    public static Builder NewBuilder(IEvent<S> evt, I entityId, int version) {
       return new Builder(evt, entityId, version);
+    }
+
+    public Builder CopyBuilder() {
+      return new Builder(this.Event, this.EntityId, this.Version, this.TimeStamp);
     }
 
     public class Builder 
@@ -30,7 +34,7 @@ namespace Coral.Core
       private int _version;
       private DateTime _timestamp;
 
-      internal EventInfo<I, S> Build() {
+      public EventInfo<I, S> Build() {
         return new EventInfo<I,S>(_evt, _entityId, _version, _timestamp);
       }
 
@@ -46,7 +50,24 @@ namespace Coral.Core
         _timestamp = timestamp;
       }
 
-      public EventInfo<I, S>.Builder Timestamp(DateTime newTimestamp) {
+
+      public Builder Event(IEvent<S> evt) {
+        _evt = evt;
+        return this;
+      }
+
+      public Builder EntityId(I entityId) {
+        _entityId = entityId;
+        return this;
+      }
+
+      public Builder Version(int version) {
+        _version = version;
+        return this;
+      }
+      
+
+      public Builder Timestamp(DateTime newTimestamp) {
         _timestamp = newTimestamp;
         return this;
       }
