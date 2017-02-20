@@ -22,5 +22,7 @@ build_script:
   - ps: dotnet restore
   - ps: dotnet build -v n
 
-test: off
+test_script:
+  - ps: dotnet test Coral.Core.Test/Coral.Core.Test.csproj
+
 version: 1.0.0-b{build}

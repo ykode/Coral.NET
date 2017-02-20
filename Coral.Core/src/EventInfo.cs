@@ -2,7 +2,7 @@ using System;
 
 namespace Coral.Core
 {
- struct EventInfo<I, S>
+ public struct EventInfo<I, S>
     where S: struct
     where I: class
   {

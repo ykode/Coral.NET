@@ -7,15 +7,15 @@ using System;
 /// </summary>
 namespace Coral.Core
 {
-  interface ICommand<S> where S: struct {}
+  public interface ICommand<S> where S: struct {}
 
-  interface IEvent<S> where S: struct {}
+  public interface IEvent<S> where S: struct {}
 
-  interface IIDGenerator<out T> where T: class {
+  public interface IIDGenerator<out T> where T: class {
     T Generate();
   }
 
-  interface Aggregate<S>
+  public interface Aggregate<S>
     where S: struct
   {
     S Zero {get;}
