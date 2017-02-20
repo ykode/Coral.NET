@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="src/CommandInfoTest.cs" />
+    <Compile Include="src/CommandAndEventInfoTest.cs" />
   </ItemGroup>
 
 </Project>
