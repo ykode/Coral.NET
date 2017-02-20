@@ -1,0 +1,6 @@
+version: 1.0.0-b{build}
+platform: Any CPU
+configuration: Release
+build:
+  parallel: true
+  project: Coral.sln 
