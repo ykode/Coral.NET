@@ -1,6 +1,7 @@
 // Base.cs
 // compile with: /doc: Base.xml
 using System;
+using System.Collections.Generic;
 
 /// <summary>
 /// The Core Namespace, all base classes are written here
@@ -11,7 +12,7 @@ namespace Coral.Core
 
   public interface IEvent<S> where S: struct {}
 
-  public interface IIDGenerator<out T> where T: class {
+  public interface IDGenerator<out T> where T: struct {
     T Generate();
   }
 
@@ -20,6 +21,6 @@ namespace Coral.Core
   {
     S Zero {get;}
     S Apply(S state, IEvent<S> evt);
-    S Exec(S state, ICommand<S> cmd);
+    List<IEvent<S>> Exec(S state, ICommand<S> cmd);
   } 
 }

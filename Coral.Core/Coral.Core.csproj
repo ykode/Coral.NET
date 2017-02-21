@@ -10,6 +10,8 @@
     <Compile Include="src/Base.cs" />
     <Compile Include="src/CommandInfo.cs" />
     <Compile Include="src/EventInfo.cs" />
+    <Compile Include="src/EventStore.cs" />
+    <Compile Include="src/CommandHandler.cs" />
   </ItemGroup>
 
 </Project>
