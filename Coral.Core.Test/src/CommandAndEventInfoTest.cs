@@ -36,7 +36,7 @@ internal struct PersonNameChanged: IEvent<Person> {
 
 namespace Coral.Core.Test
 {
-  public class CoralCoreTest
+  public class CommandAndEventInfoTest
   {
     [Fact]
     public void TestCommandInfoCreation()

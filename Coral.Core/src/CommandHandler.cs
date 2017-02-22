@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Coral.Core {
-  class CommandHandler<I, S>
+  public class CommandHandler<I, S>
     where I: struct
     where S: struct
   {
-    private Aggregate<S> _aggregate;
-    private EventStore<I, S> _eventStore;
-    private IDGenerator<I> _generator;
+    private IAggregate<S> _aggregate;
+    private IEventStore<I, S> _eventStore;
+    private IIDGenerator<I> _generator;
 
-    CommandHandler(Aggregate<S> aggregate, EventStore<I, S> store, 
-      IDGenerator<I> generator) 
+    public CommandHandler(IAggregate<S> aggregate, IEventStore<I, S> store, 
+      IIDGenerator<I> generator) 
     {
       _aggregate = aggregate; _eventStore = store; _generator = generator;
     }
 
-    void handle(I? id, ICommand<S> command, Action<IEnumerable<EventInfo<I,S>>> success, 
+    public void handle(I? id, ICommand<S> command, Action<IEnumerable<EventInfo<I,S>>> success, 
       Action<Exception> failure)
     {
       if (null == id) {

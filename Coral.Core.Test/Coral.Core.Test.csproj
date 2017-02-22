@@ -1,23 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  
   <PropertyGroup>
     <EnableDefaultCompileItems>False</EnableDefaultCompileItems>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp1.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0-preview-20170123-02" />
+    <PackageReference Include="moq" Version="4.6.0" />
     <PackageReference Include="xunit" Version="2.2.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Coral.Core\Coral.Core.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <Compile Include="src/CommandAndEventInfoTest.cs" />
+    <Compile Include="src/CommandHandlerTest.cs" />
   </ItemGroup>
-
 </Project>

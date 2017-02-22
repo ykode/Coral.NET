@@ -2,7 +2,7 @@
   xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <EnableDefaultCompileItems>False</EnableDefaultCompileItems>
-    <TargetFramework>netstandard1.0</TargetFramework>
+    <TargetFramework>netstandard1.3</TargetFramework>
   </PropertyGroup>
   <Target Name="Build">  
   </Target>

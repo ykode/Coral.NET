@@ -12,11 +12,11 @@ namespace Coral.Core
 
   public interface IEvent<S> where S: struct {}
 
-  public interface IDGenerator<out T> where T: struct {
+  public interface IIDGenerator<out T> where T: struct {
     T Generate();
   }
 
-  public interface Aggregate<S>
+  public interface IAggregate<S>
     where S: struct
   {
     S Zero {get;}
