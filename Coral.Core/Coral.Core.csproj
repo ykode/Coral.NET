@@ -12,6 +12,7 @@
     <Compile Include="src/EventInfo.cs" />
     <Compile Include="src/EventStore.cs" />
     <Compile Include="src/CommandHandler.cs" />
+    <Compile Include="src/Serialiser.cs" />
   </ItemGroup>
 
 </Project>
