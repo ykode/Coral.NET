@@ -2,7 +2,7 @@ using Xunit;
 using System;
 using Coral.Core;
 
-internal struct Person {
+public struct Person {
   public string name {get;}
   public int age {get;}
 
@@ -11,7 +11,7 @@ internal struct Person {
   }
 }
 
-internal struct CreatePerson: ICommand<Person> {
+public struct CreatePerson: ICommand<Person> {
   public string name {get; }
   public int age {get;}
 
@@ -20,7 +20,7 @@ internal struct CreatePerson: ICommand<Person> {
   }
 }
 
-internal struct PersonCreated: IEvent<Person> {
+public struct PersonCreated: IEvent<Person> {
   public string name {get; }
   public int age {get; }
 
@@ -29,7 +29,7 @@ internal struct PersonCreated: IEvent<Person> {
   }
 }
 
-internal struct PersonNameChanged: IEvent<Person> {
+public struct PersonNameChanged: IEvent<Person> {
   public string name {get; }
   public PersonNameChanged(string name) {this.name = name;}
 }
