@@ -44,4 +44,14 @@ Global
 		{ECFE086D-55F4-47D7-8EA1-2A8AA2EAE801}.Release|x86.ActiveCfg = Release|x86
 		{ECFE086D-55F4-47D7-8EA1-2A8AA2EAE801}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = None
+		$1.ResourceNamePolicy = FileFormatDefault
+		$0.StandardHeader = $2
+		$2.Text = 
+		$2.IncludeInNewFiles = True
+		description = Coral is Domain Driven Desing Library and base class for .NET written in C#
+	EndGlobalSection
 EndGlobal

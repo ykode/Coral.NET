@@ -17,12 +17,27 @@ install:
   - ps: $env:Path = "$env:DOTNET_INSTALL_DIR;$env:Path"
 
 build_script:
+  - mkdir artifacts
   - ps: .\scripts\show-dotnet-info.ps1
-  - ps: dotnet --info
-  - ps: dotnet restore
-  - ps: dotnet build -v n
+  - dotnet --info
+  - dotnet restore
+  - dotnet build -v n
+  - dotnet pack /p:Version=%appveyor_build_version% -o artifacts -c Release Coral.Core\Coral.Core.csproj
 
 test_script:
   - ps: dotnet test Coral.Core.Test/Coral.Core.Test.csproj
 
-version: 1.0.0-b{build}
+artifacts:
+  - path: artifacts\**\*.nupkg
+    name: NuGet
+
+deploy:
+  - provider: NuGet
+    server: https://www.myget.org/F/coral/api/v2/package
+    api_key:
+      secure: b5oBmcZl3AXKVJ/lzr6SFRUqgUXK8V8rGmFTiIFp70UMZmuOzyJa6x/l0UTIaElq
+    skip_symbols: true
+    on:
+      branch: master
+
+version: 0.1.0-b{build}

@@ -1,5 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk" 
-  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <EnableDefaultCompileItems>False</EnableDefaultCompileItems>
     <TargetFramework>netstandard1.3</TargetFramework>
