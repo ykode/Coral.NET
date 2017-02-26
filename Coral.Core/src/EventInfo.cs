@@ -2,16 +2,16 @@ using System;
 
 namespace Coral.Core
 {
- public struct EventInfo<I, S>
-    where S: struct
-    where I: struct
+ public struct EventInfo<TIdentity, TState>
+    where TState: struct
+    where TIdentity: struct
   {
-    public I           EntityId { get; }
-    public IEvent<S>   Event { get; }
+    public TIdentity           EntityId { get; }
+    public IEvent<TState>   Event { get; }
     public int         Version { get; }
     public DateTime    TimeStamp { get; }    
 
-    private EventInfo( IEvent<S> evt, I entityId,
+    private EventInfo( IEvent<TState> evt, TIdentity entityId,
                       int version, 
                       DateTime timestamp) 
     {
@@ -19,7 +19,7 @@ namespace Coral.Core
       Version  = version; TimeStamp = timestamp;
     }
 
-    public static Builder NewBuilder(IEvent<S> evt, I entityId, int version) {
+    public static Builder NewBuilder(IEvent<TState> evt, TIdentity entityId, int version) {
       return new Builder(evt, entityId, version);
     }
 
@@ -29,21 +29,21 @@ namespace Coral.Core
 
     public class Builder 
     {
-      private IEvent<S> _evt;
-      private I _entityId;
+      private IEvent<TState> _evt;
+      private TIdentity _entityId;
       private int _version;
       private DateTime _timestamp;
 
-      public EventInfo<I, S> Build() {
-        return new EventInfo<I,S>(_evt, _entityId, _version, _timestamp);
+      public EventInfo<TIdentity, TState> Build() {
+        return new EventInfo<TIdentity,TState>(_evt, _entityId, _version, _timestamp);
       }
 
-      internal Builder(IEvent<S> evt, I entityId, int version): 
+      internal Builder(IEvent<TState> evt, TIdentity entityId, int version): 
         this(evt, entityId, version, DateTime.UtcNow)
       {
       }
 
-      internal Builder(IEvent<S> evt, I entityId, int version, 
+      internal Builder(IEvent<TState> evt, TIdentity entityId, int version, 
         DateTime timestamp) 
       {
         _evt = evt; _entityId = entityId; _version = version;
@@ -51,12 +51,12 @@ namespace Coral.Core
       }
 
 
-      public Builder Event(IEvent<S> evt) {
+      public Builder Event(IEvent<TState> evt) {
         _evt = evt;
         return this;
       }
 
-      public Builder EntityId(I entityId) {
+      public Builder EntityId(TIdentity entityId) {
         _entityId = entityId;
         return this;
       }

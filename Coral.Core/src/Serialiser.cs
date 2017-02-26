@@ -1,10 +1,10 @@
 using System;
 
 namespace Coral.Core {
-  public interface Serialiser<T, U>
+  public interface Serialiser<TObject, TSerialisedObject>
   {
-    U serialise(T obj);
-    T deserialise(U data);
+    TSerialisedObject serialise(TObject obj);
+    TObject deserialise(TSerialisedObject data);
 
   }
 }

@@ -8,19 +8,19 @@ using System.Collections.Generic;
 /// </summary>
 namespace Coral.Core
 {
-  public interface ICommand<S> where S: struct {}
+  public interface ICommand<TState> where TState: struct {}
 
-  public interface IEvent<S> where S: struct {}
+  public interface IEvent<TState> where TState: struct {}
 
-  public interface IIDGenerator<out T> where T: struct {
-    T Generate();
+  public interface IIDGenerator<out TIdentity> where TIdentity: struct {
+    TIdentity Generate();
   }
 
-  public interface IAggregate<S>
-    where S: struct
+  public interface IAggregate<TState>
+    where TState: struct
   {
-    S Zero {get;}
-    S Apply(S state, IEvent<S> evt);
-    List<IEvent<S>> Exec(S state, ICommand<S> cmd);
+    TState Zero {get;}
+    TState Apply(TState state, IEvent<TState> evt);
+    List<IEvent<TState>> Exec(TState state, ICommand<TState> cmd);
   } 
 }

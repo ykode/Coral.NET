@@ -2,19 +2,19 @@ using System;
 
 namespace Coral.Core {
 
-  public struct CommandInfo<I, S>
-    where S: struct
-    where I: struct
+  public struct CommandInfo<TIdentity, TState>
+    where TState: struct
+    where TIdentity: struct
   {
-    public ICommand<S> Command { get; }
-    public Nullable<I> EntityId { get; }
+    public ICommand<TState> Command { get; }
+    public Nullable<TIdentity> EntityId { get; }
     public int?        TargetVersion { get; }
 
-    private CommandInfo(ICommand<S> cmd, I? entityId, int? targetVersion) {
+    private CommandInfo(ICommand<TState> cmd, TIdentity? entityId, int? targetVersion) {
       Command = cmd; EntityId = entityId; TargetVersion = targetVersion;
     }
 
-    public static Builder NewBuilder(ICommand<S> cmd) {
+    public static Builder NewBuilder(ICommand<TState> cmd) {
       return new Builder(cmd);
     }
 
@@ -23,20 +23,20 @@ namespace Coral.Core {
     }
 
     public class Builder {
-      private ICommand<S> _cmd;
-      private I? _entityId;
+      private ICommand<TState> _cmd;
+      private TIdentity? _entityId;
       private int? _targetVersion;
 
-      internal Builder(ICommand<S> cmd, I? entityId, int? targetVersion) {
+      internal Builder(ICommand<TState> cmd, TIdentity? entityId, int? targetVersion) {
         _cmd = cmd; _entityId = entityId; _targetVersion = targetVersion;
       }
 
-      internal Builder(ICommand<S> cmd): this(cmd, null, null)
+      internal Builder(ICommand<TState> cmd): this(cmd, null, null)
       {
 
       }
 
-      public Builder EntityId(I entityId) {
+      public Builder EntityId(TIdentity entityId) {
         _entityId = entityId;
         return this;
       }
@@ -46,13 +46,13 @@ namespace Coral.Core {
         return this;
       }
 
-      public Builder Command(ICommand<S> command) {
+      public Builder Command(ICommand<TState> command) {
         _cmd = command;
         return this;
       }
 
-      public CommandInfo<I, S> Build() {
-        return new CommandInfo<I,S>(_cmd, _entityId, _targetVersion);
+      public CommandInfo<TIdentity, TState> Build() {
+        return new CommandInfo<TIdentity,TState>(_cmd, _entityId, _targetVersion);
       }
     }
   }
