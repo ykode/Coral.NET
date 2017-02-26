@@ -1,6 +1,7 @@
 # Coral
 
 [![Build status](https://ci.appveyor.com/api/projects/status/i9bq2yimsgsuqg7w?svg=true)](https://ci.appveyor.com/project/lynxluna/coral)
+[![MyGet Prerelease](https://img.shields.io/myget/coral/vpre/Coral.Core.svg)](https://www.myget.org/feed/Packages/coral)
 
 A Domain Driven Design Library for .NET Core.
 
