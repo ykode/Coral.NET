@@ -22,7 +22,7 @@ build_script:
   - dotnet --info
   - dotnet restore
   - dotnet build -v n
-  - dotnet pack /p:Version=%appveyor_build_version% -o artifacts -c Release Coral.Core\Coral.Core.csproj
+  - dotnet pack /p:Version=%appveyor_build_version% -o %~dp0\artifacts -c Release Coral.Core\Coral.Core.csproj
 
 test_script:
   - ps: dotnet test Coral.Core.Test/Coral.Core.Test.csproj
